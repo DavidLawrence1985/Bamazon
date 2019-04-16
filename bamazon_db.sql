@@ -18,7 +18,7 @@ VALUES  ("Record Player", "Electronics", 74.50, 15),
   ("Notebook", "Office", 0.75, 1500),
   ("Tent", "Outdoors", 100, 15),
   ("Cutting board", "Kitchen", 24, 95),
-  ("Writing desk", "Household", 250, 8),
+  ("Writing desk", "Household", 250, 4),
   ("Fight Club DVD", "Entertainment", 7.50, 50),
   ("T-shirt", "Clothing", 23, 300),
   ("Machi Koro", "Games", 15, 140);
