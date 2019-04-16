@@ -25,14 +25,14 @@ function readProducts() {
     connection.query("SELECT * FROM products", function(err, res) {
       if (err) throw err;
        
-      var table = new Table({
+      var table = new Table({//create table cunstroctor npm cli table
             head: ["ID", "Product", 'Department', "Price $", "Quantity"]
         , colWidths: [10,25,25,15,20]
         });
 
         for(var i = 0;i < res.length; i++){   
             table.push(
-                [res[i].item_id, res[i].product_name, res[i].department_name, res[i].price, res[i].stock_quantity]
+                [res[i].item_id, res[i].product_name, res[i].department_name, res[i].price, res[i].stock_quantity]//push each item into table 
             );
         }
             console.log(table.toString());
@@ -57,7 +57,7 @@ function purchase(){
     },{
         name: "quantity",
         type:"input",
-        message: "How many would you like to purchase",//something like else if value < stock_qunatity log not enough
+        message: "How many would you like to purchase",
         validate: function(value) {
             if (isNaN(value) === false) {
               return true;
@@ -65,7 +65,7 @@ function purchase(){
             return false;
           }
     }
-        //if answer.quantity > answer.idselect stock_quantity (show error)
+        
     
     ])
     .then(function(answer) {
@@ -75,12 +75,12 @@ function purchase(){
             if (err) throw err;
 
             else if(!res.length){
-                console.log("\r\n____________________________________________________")
+                console.log("\r\n____________________________________________________");
                 console.log("\r\n!NO ITEM SELECETED\r\n CHECK ITEM ID NUBMER!");
                 readProducts()
             }
             else if( answer.quantity > res[0].stock_quantity){
-                console.log("\r\n____________________________________________________")
+                console.log("\r\n____________________________________________________");
                 console.log("\r\n!INSUFFICIENT QUANTITY\r\n CHECK ORDER AMOUNT!");
                 readProducts()
             }
@@ -88,7 +88,7 @@ function purchase(){
             else{
 
                var queryTwo = "UPDATE products SET stock_quantity=stock_quantity - ? WHERE item_id = ?"
-                        // based on their answer, either call the bid or the post functions
+                        
                 connection.query(queryTwo, [answer.quantity, answer.idSelect], function(err, res) {
                     if (err) throw err;
                             
@@ -107,27 +107,18 @@ function purchase(){
                     table.push(
                        [res[0].product_name, answer.quantity, "$" + x.toFixed(2)]
                     );
-                    console.log("\r\n_____________________________ Order Details _____________________________\r\n")
+                    console.log("\r\n_____________________________ Order Details _____________________________\r\n");
                     console.log(table.toString());
-                    console.log("\r\n_________________________________________________________________________")
+                    console.log("\r\n_________________________________________________________________________");
                     connection.end();
                 
-                })
+                });
             
         }
 
-        })
+        });
 
-    })
+    });
 } 
-// UPDATE products SET stock_quantity=stock_quantity - 5 WHERE item_id=4
-
 
   readProducts();
-
-
-  
-//   The first should ask them the ID of the product they would like to buy.
-// The second message should ask how many units of the product they would like to buy.
-// in insuficiant quantity console.lognot enough
-// if enough show order with item quantity and total price

@@ -97,7 +97,7 @@ function readProducts() {// If a manager selects View Products for Sale, the app
         }
             console.log("\r\n" + table.toString());
     });
-    console.log("\r\n\r\n")
+    console.log("\r\n\r\n");
     options();
   }  
 
@@ -144,7 +144,7 @@ function addStock(){// If a manager selects Add to Inventory, your app should di
               return true;
             }
             return false;
-          }
+        }
     }
     
     ])
@@ -167,14 +167,14 @@ function addStock(){// If a manager selects Add to Inventory, your app should di
                 connection.query(queryTwo, [answer.quantity, answer.idSelect], function(err, res) {
                     if (err) throw err;
                 
-                show();  
-                console.log("\r\n")  
-                options();       
-        })
-}
-})
+                    show();  
+                    console.log("\r\n");  
+                    options();       
+                 })
+            }
+        });
 
-})
+    });
 } 
 
 function addNew(){// If a manager selects Add New Product, it should allow the manager to add a completely new product to the store.
@@ -218,9 +218,9 @@ function addNew(){// If a manager selects Add New Product, it should allow the m
             function(err, res) {
           
             if (err) throw err;
-            console.log("New product successfully added\r\n")
+            console.log("New product successfully added\r\n");
             show();
-            console.log("\r\n")
+            console.log("\r\n");
             options();
         })
     })
