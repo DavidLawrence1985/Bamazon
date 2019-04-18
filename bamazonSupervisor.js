@@ -52,8 +52,9 @@ connection.connect(function(err) {
 function viewDepartment(){
 
     //table department_id , department_name, over_head_costs, product_sales, Total profit
-    var query = "SELECT products.department_name, products.product_sales, departments.department_id, departments.over_head_costs, "  //use group by to combine same department name 
-    query += "FROM products INNER JOIN departments On products.department_name = departments.department_name"//
+  
+  var query = "SELECT products.department_name, SUM(products.product_sales) AS sales, departments.department_id, departments.over_head_costs FROM products INNER JOIN"
+   query += " departments On products.department_name = departments.department_name GROUP BY department_name";
     connection.query(query, function(err, res) {//joined tables NEEED TO DO 
         if (err) throw err;
 
@@ -63,17 +64,17 @@ function viewDepartment(){
         });
 
         for(var i = 0;i < res.length; i++){   
-            var x = res[i].over_head_costs - res[i].product_sales;//var for profit
+            var x =res[i].sales - res[i].over_head_costs;//var for profit
                 
             table.push(
-                [res[i].department_id, res[i].department_name, res[i].over_head_costs, res[i].product_sales, x.toFixed(2)]//push each item into table 
+                [res[i].department_id, res[i].department_name, res[i].over_head_costs, res[i].sales, x.toFixed(2)]//push each item into table 
             );
 
         }
             console.log(table.toString());
-            
+            options()
     });
-    // options();
+    ;
 }  
 
 function createNew(){

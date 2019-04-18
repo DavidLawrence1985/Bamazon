@@ -76,6 +76,7 @@ function show() {//shows products for add funtion
             );
         }
             console.log("\r\n" + table.toString());
+            
     });
     
   }
@@ -96,9 +97,10 @@ function readProducts() {// If a manager selects View Products for Sale, the app
             );
         }
             console.log("\r\n" + table.toString());
+            options();
+            
     });
-    console.log("\r\n\r\n");
-    options();
+    
   }  
 
 function lowQuantity(){// If a manager selects View Low Inventory, then it should list all items with an inventory count lower than five
@@ -116,8 +118,9 @@ function lowQuantity(){// If a manager selects View Low Inventory, then it shoul
             );
         }
             console.log("\r\n" + table.toString());
+            options();
     });
-    options();
+    
 
 }  
 
@@ -167,9 +170,11 @@ function addStock(){// If a manager selects Add to Inventory, your app should di
                 connection.query(queryTwo, [answer.quantity, answer.idSelect], function(err, res) {
                     if (err) throw err;
                 
-                    show();  
+                     
                     console.log("\r\n");  
-                    options();       
+                    // show(); 
+                    // options();
+                    readProducts();       
                  })
             }
         });
@@ -219,9 +224,10 @@ function addNew(){// If a manager selects Add New Product, it should allow the m
           
             if (err) throw err;
             console.log("New product successfully added\r\n");
-            show();
-            console.log("\r\n");
-            options();
+            // show();
+            // console.log("\r\n");
+            // options();
+            readProducts();
         })
     })
     

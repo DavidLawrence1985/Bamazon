@@ -94,7 +94,7 @@ function purchase(){
                             
                 })
 
-                var queryFour = "UPDATE products SET product_sales = price * ? WHERE item_id = ?"//updates produce_sales
+                var queryFour = "UPDATE products SET product_sales = product_Sales + price * ? WHERE item_id = ?"//updates produce_sales
                 
                 
                 connection.query(queryFour, [answer.quantity, answer.idSelect], function(err, res) {
@@ -120,7 +120,7 @@ function purchase(){
                     console.log("\r\n_____________________________ Order Details _____________________________\r\n");
                     console.log(table.toString());
                     console.log("\r\n_________________________________________________________________________");
-                    connection.end();
+                    after();
                 
                 });
             
@@ -130,5 +130,29 @@ function purchase(){
 
     });
 } 
+
+function after(){
+    inquirer
+      .prompt({
+        name: "action",
+        type: "list",
+        message: "What would you like to do?",
+        choices: [
+          "Make another purchase",
+          "exit"
+        ]
+      })
+      .then(function(answer) {  
+        switch (answer.action) {
+        case "Make another purchase":
+            readProducts();
+            break;
+            
+        case "exit":
+            connection.end();
+            break;
+        }
+      });
+}
 
   readProducts();
