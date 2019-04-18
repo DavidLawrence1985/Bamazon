@@ -28,7 +28,7 @@ writen and maintained by David Lawrence https://www.linkedin.com/in/david-lawren
 
 ## Screen shots 
     ###### Customer view
-    ![](https://github.com/DavidLawrence1985/Bamazon/customer.png)
+    <img src="https://github.com/DavidLawrence1985/Bamazon/customer.png"
 
     ###### Manager view
     ![](https://github.com/DavidLawrence1985/Bamazon/manager.png)
