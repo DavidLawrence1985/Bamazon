@@ -25,9 +25,10 @@ writen and maintained by David Lawrence https://www.linkedin.com/in/david-lawren
 ## *DEMO*
 
 ######customer view gif
-
+<!-- 
 <a href="https://imgflip.com/gif/2yx1bg"><img src="https://i.imgflip.com/2yx1bg.gif" title="made at imgflip.com"/></a>
-
+ -->
+ <iframe width="400" height="auto" src="https://www.youtube.com/embed/bRq250K6GcM" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 ## Screen shots 
 ###### Customer view
