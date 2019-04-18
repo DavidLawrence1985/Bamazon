@@ -28,12 +28,12 @@ writen and maintained by David Lawrence https://www.linkedin.com/in/david-lawren
 
 ## Screen shots 
     ###### Customer view
-    ![](/customer.png)
+    ![](customer.png)
 
     ###### Manager view
-    ![](/manager.png)
+    ![](manager.png)
 
     ###### Supervisor view
-    ![](/supervisor.png)
+    ![](supervisor.png)
     
 
