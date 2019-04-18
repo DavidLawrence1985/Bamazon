@@ -23,17 +23,18 @@ writen and maintained by David Lawrence https://www.linkedin.com/in/david-lawren
 
 
 ## *DEMO*
-    ######customer view
+
+######customer view gif
 
 <a href="https://imgflip.com/gif/2yx1bg"><img src="https://i.imgflip.com/2yx1bg.gif" title="made at imgflip.com"/></a>
 
 
-
+## Screen shots 
 ###### Customer view
 <img src="https://github.com/DavidLawrence1985/Bamazon/blob/master/customer.png">
 
 ###### Manager view
-<img src="https://github.com/DavidLawrence1985/Bamazon/blob/master/manager.png">
+<img src="https://github.com/DavidLawrence1985/Bamazon/blob/master/manager.png">    
 
 ###### Supervisor view
 <img src="https://github.com/DavidLawrence1985/Bamazon/blob/master/supervisor.png">
