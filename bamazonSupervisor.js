@@ -118,7 +118,7 @@ function createNew(){
     connection.query(queryTwo,
       {
         department_name: answer.newdepartment,
-        // product_sales: ,
+        product_sales: "0",
       },
       function(err, res){
       if (err) throw err;
