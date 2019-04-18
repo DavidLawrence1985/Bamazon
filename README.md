@@ -5,7 +5,7 @@
 
 -To get started you will need to copy the code and save onto your machine, using command line navigate to the root folder
 
-# Using 
+# Get started
     run npm install to install the required packages
 
         run node bamazonCustomer.js --follow the prompts to use the mock marketplace and make mock purchases  
@@ -25,7 +25,7 @@ writen and maintained by David Lawrence https://www.linkedin.com/in/david-lawren
 ## *DEMO*
 
 ###### YOUTUBE video link
-
+    **gif coming soon...untill then follow the below link**
 https://www.youtube.com/watch?v=bRq250K6GcM
 
 ## Screen shots 
