@@ -22,7 +22,9 @@ connection.connect(function(err) {
 
 function readProducts() {
     // console.log("Selecting all bamazon...\n");
-    connection.query("SELECT * FROM products", function(err, res) {
+    // var query = "SELECT * FROM products"
+    var query = "SELECT item_id, IFNULL(product_name,'n/a') AS name, IFNULL(department_name,'n/a') AS dept, IFNULL(price,'0') AS cost, IFNULL(stock_quantity,'0') AS amount FROM products"
+      connection.query(query, function(err, res) {
       if (err) throw err;
        
       var table = new Table({//create table constructor npm cli table
@@ -32,7 +34,7 @@ function readProducts() {
 
         for(var i = 0;i < res.length; i++){   
             table.push(
-                [res[i].item_id, res[i].product_name, res[i].department_name, res[i].price, res[i].stock_quantity]//push each item into table 
+                [res[i].item_id, res[i].name, res[i].dept, res[i].cost, res[i].amount]//push each item into table 
             );
         }
             console.log(table.toString());
@@ -65,8 +67,6 @@ function purchase(){
             return false;
           }
     }
-        
-    
     ])
     .then(function(answer) {
         var query = "SELECT item_id, product_name,price,stock_quantity FROM products WHERE item_id = ?"    
@@ -94,7 +94,7 @@ function purchase(){
                             
                 })
 
-                var queryFour = "UPDATE products SET product_sales = product_Sales + price * ? WHERE item_id = ?"//updates produce_sales
+                var queryFour = "UPDATE products SET product_sales = product_Sales + price * ? WHERE item_id = ?"//updates product_sales
                 
                 
                 connection.query(queryFour, [answer.quantity, answer.idSelect], function(err, res) {
@@ -120,7 +120,7 @@ function purchase(){
                     console.log("\r\n_____________________________ Order Details _____________________________\r\n");
                     console.log(table.toString());
                     console.log("\r\n_________________________________________________________________________");
-                    after();
+                    choice();
                 
                 });
             
@@ -131,20 +131,20 @@ function purchase(){
     });
 } 
 
-function after(){
+function choice(){
     inquirer
       .prompt({
         name: "action",
         type: "list",
         message: "What would you like to do?",
         choices: [
-          "Make another purchase",
+          "Make a purchase",
           "exit"
         ]
       })
       .then(function(answer) {  
         switch (answer.action) {
-        case "Make another purchase":
+        case "Make a purchase":
             readProducts();
             break;
             
@@ -155,4 +155,4 @@ function after(){
       });
 }
 
-  readProducts();
+  choice();

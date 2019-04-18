@@ -61,8 +61,10 @@ function options() {
 
 function show() {//shows products for add funtion
     
-    
-    connection.query("SELECT * FROM products", function(err, res) {
+  var query = "SELECT item_id, IFNULL(product_name,'n/a') AS name, IFNULL(department_name,'n/a') AS dept, IFNULL(price,'0')"
+        query+=" AS cost, IFNULL(stock_quantity,'0') AS amount FROM products"  
+
+    connection.query(query, function(err, res) {
       if (err) throw err;
        
       var table = new Table({
@@ -72,18 +74,20 @@ function show() {//shows products for add funtion
 
         for(var i = 0;i < res.length; i++){   
             table.push(
-                [res[i].item_id, res[i].product_name, res[i].department_name, res[i].price, res[i].stock_quantity]
+                [res[i].item_id, res[i].name, res[i].dept, res[i].cost, res[i].amount]
             );
         }
             console.log("\r\n" + table.toString());
-            
+          
     });
     
-  }
+  } 
 
 function readProducts() {// If a manager selects View Products for Sale, the app should list every available item: the item IDs, names, prices, and quantities.
-    
-    connection.query("SELECT * FROM products", function(err, res) {
+    var query = "SELECT item_id, IFNULL(product_name,'n/a') AS name, IFNULL(department_name,'n/a') AS dept, IFNULL(price,'0')"
+        query+=" AS cost, IFNULL(stock_quantity,'0') AS amount FROM products"  
+
+    connection.query(query, function(err, res) {
       if (err) throw err;
        
       var table = new Table({
@@ -93,7 +97,7 @@ function readProducts() {// If a manager selects View Products for Sale, the app
 
         for(var i = 0;i < res.length; i++){   
             table.push(
-                [res[i].item_id, res[i].product_name, res[i].department_name, res[i].price, res[i].stock_quantity]
+                [res[i].item_id, res[i].name, res[i].dept, res[i].cost, res[i].amount]
             );
         }
             console.log("\r\n" + table.toString());
@@ -188,10 +192,22 @@ function addNew(){// If a manager selects Add New Product, it should allow the m
       name: "product_name",
       type: "input",
       message: "What product would you like to add?",
+      validate: function(value) {
+        if (value.length === 0) {
+          return false;
+        }
+        return true;
+      }
     },{
         name: "department_name",
         type:"input",
         message: "Which department of new product?",
+        validate: function(value) {
+          if (value.length === 0) {
+            return false;
+          }
+          return true;
+        }
     },{
         name: "price",
         type:"input",
@@ -218,7 +234,13 @@ function addNew(){// If a manager selects Add New Product, it should allow the m
     .then(function(answer) {
 
         var query = "INSERT INTO products SET ?";
-        connection.query(query,{product_name: answer.product_name, department_name: answer.department_name, price: answer.price, stock_quantity: answer.stock_quantity},
+        connection.query(query,
+          {
+            product_name: answer.product_name, 
+            department_name: answer.department_name, 
+            price: answer.price, 
+            stock_quantity: answer.stock_quantity
+          },
             
             function(err, res) {
           

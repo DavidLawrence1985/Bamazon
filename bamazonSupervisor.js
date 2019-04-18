@@ -50,17 +50,16 @@ connection.connect(function(err) {
   }
 
 function viewDepartment(){
-
-    //table department_id , department_name, over_head_costs, product_sales, Total profit
-  
-  var query = "SELECT products.department_name, SUM(products.product_sales) AS sales, departments.department_id, departments.over_head_costs FROM products INNER JOIN"
-   query += " departments On products.department_name = departments.department_name GROUP BY department_name";
-    connection.query(query, function(err, res) {//joined tables NEEED TO DO 
+ 
+  var query = "SELECT products.department_name, IFNULL(SUM(products.product_sales),0) AS sales, departments.department_id, departments.over_head_costs FROM products INNER JOIN"
+      query += " departments On products.department_name = departments.department_name GROUP BY department_name";
+      
+      connection.query(query, function(err, res) {//join tables
         if (err) throw err;
 
         var table = new Table({//create table constructor npm cli table
             head: ["Department ID", "Department Name", "Overhead costs", "Product Sales", "Total Profit"]
-        , colWidths: [20,20,20,15,15]
+        , colWidths: [10,20,20,15,15]
         });
 
         for(var i = 0;i < res.length; i++){   
@@ -74,11 +73,61 @@ function viewDepartment(){
             console.log(table.toString());
             options()
     });
-    ;
+    
 }  
 
 function createNew(){
+  inquirer
+  .prompt([{
+    name: "newdepartment",
+    type: "input",
+    message: "Name of new department",
+    validate: function(value) {
+      if (value.length === 0) {
+        return false;
+      }
+      return true;
+    }
+  },{
+      name: "overhead",
+      type:"input",
+      message: "Department overhead costs",
+      validate: function(value) {
+          if (isNaN(value) === false) {
+            return true;
+          }
+          return false;
+        }
+  }
+])
+  .then(function(answer) {
+    var query = "INSERT INTO departments SET ?"
+    
+    connection.query(query,
+      {
+        department_name: answer.newdepartment, 
+        over_head_costs: answer.overhead
+      }, 
+      function(err, res) {
+      if (err) throw err;
+      
+    })
 
+    var queryTwo = "INSERT INTO products SET ?"
+
+    connection.query(queryTwo,
+      {
+        department_name: answer.newdepartment,
+        // product_sales: ,
+      },
+      function(err, res){
+      if (err) throw err;
+    })
+
+  viewDepartment();  
+  });  
+  
 }
+
 
 options();
