@@ -31,7 +31,7 @@ writen and maintained by David Lawrence https://www.linkedin.com/in/david-lawren
     <img src="https://github.com/DavidLawrence1985/Bamazon/blob/master/customer.png">
 
     ###### Manager view
-    <img src="https://github.com/DavidLawrence1985/Bamazon/blob/master/managerr.png">
+    <img src="https://github.com/DavidLawrence1985/Bamazon/blob/master/manager.png">
 
     ###### Supervisor view
     <img src="https://github.com/DavidLawrence1985/Bamazon/blob/master/supervisor.png">
