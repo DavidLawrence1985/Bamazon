@@ -9,6 +9,7 @@ CREATE TABLE products (
   department_name VARCHAR(100) NULL,
   price DECIMAL(10,4) NULL,
   stock_quantity INT NULL,
+  product_sales DECIMAL(10,4) NULL,
   PRIMARY KEY (item_id)
 );
 INSERT INTO products (product_name, department_name, price, stock_quantity)
@@ -23,6 +24,12 @@ VALUES  ("Record Player", "Electronics", 74.50, 15),
   ("T-shirt", "Clothing", 23, 300),
   ("Machi Koro", "Games", 15, 140);
 
+CREATE TABLE departments (
+  department_id INT AUTO_INCREMENT NOT NULL,
+  department_name VARCHAR(100),
+  over_head_costs DECIMAL(10,4) NULL,
+  PRIMARY KEY (department_id)
+  );
 
 -- item_id (unique id for each product)
 -- product_name (Name of product)

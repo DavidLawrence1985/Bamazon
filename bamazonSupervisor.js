@@ -51,6 +51,29 @@ connection.connect(function(err) {
 
 function viewDepartment(){
 
+    //table department_id , department_name, over_head_costs, product_sales, Total profit
+    var query = "SELECT products.department_name, products.product_sales, departments.department_id, departments.over_head_costs, "  //use group by to combine same department name 
+    query += "FROM products INNER JOIN departments On products.department_name = departments.department_name"//
+    connection.query(query, function(err, res) {//joined tables NEEED TO DO 
+        if (err) throw err;
+
+        var table = new Table({//create table constructor npm cli table
+            head: ["Department ID", "Department Name", "Overhead costs", "Product Sales", "Total Profit"]
+        , colWidths: [20,20,20,15,15]
+        });
+
+        for(var i = 0;i < res.length; i++){   
+            var x = res[i].over_head_costs - res[i].product_sales;//var for profit
+                
+            table.push(
+                [res[i].department_id, res[i].department_name, res[i].over_head_costs, res[i].product_sales, x.toFixed(2)]//push each item into table 
+            );
+
+        }
+            console.log(table.toString());
+            
+    });
+    // options();
 }  
 
 function createNew(){

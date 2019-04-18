@@ -25,9 +25,9 @@ function readProducts() {
     connection.query("SELECT * FROM products", function(err, res) {
       if (err) throw err;
        
-      var table = new Table({//create table cunstroctor npm cli table
+      var table = new Table({//create table constructor npm cli table
             head: ["ID", "Product", 'Department', "Price $", "Quantity"]
-        , colWidths: [10,25,25,15,20]
+        , colWidths: [10,25,25,15,15]
         });
 
         for(var i = 0;i < res.length; i++){   
@@ -87,12 +87,22 @@ function purchase(){
             
             else{
 
-               var queryTwo = "UPDATE products SET stock_quantity=stock_quantity - ? WHERE item_id = ?"
+                var queryTwo = "UPDATE products SET stock_quantity=stock_quantity - ? WHERE item_id = ?"
                         
                 connection.query(queryTwo, [answer.quantity, answer.idSelect], function(err, res) {
                     if (err) throw err;
                             
-        })
+                })
+
+                var queryFour = "UPDATE products SET product_sales = price * ? WHERE item_id = ?"//updates produce_sales
+                
+                
+                connection.query(queryFour, [answer.quantity, answer.idSelect], function(err, res) {
+                    
+                    if (err) throw err;
+                            
+                })
+
 
                 var queryThree = "SELECT item_id, product_name,price,stock_quantity FROM products WHERE item_id = ?"    
                 connection.query(queryThree, answer.idSelect, function(err, res) {
