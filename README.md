@@ -24,13 +24,9 @@ writen and maintained by David Lawrence https://www.linkedin.com/in/david-lawren
 
 ## *DEMO*
 
-######customer view gif
+###### YOUTUBE video link
 
-<iframe src="https://giphy.com/embed/Lo5uIH3RY9DYQ4iXII" width="480" height="270" frameBorder="0" class="giphy-embed" allowFullScreen></iframe><p><a href="https://giphy.com/gifs/cli-Lo5uIH3RY9DYQ4iXII">via GIPHY</a></p>
-<!-- 
-<a href="https://imgflip.com/gif/2yx1bg"><img src="https://i.imgflip.com/2yx1bg.gif" title="made at imgflip.com"/></a>
- -->
- <!-- <iframe width="400" height="auto" src="https://www.youtube.com/embed/bRq250K6GcM" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe> -->
+https://www.youtube.com/watch?v=bRq250K6GcM
 
 ## Screen shots 
 ###### Customer view
