@@ -28,12 +28,12 @@ writen and maintained by David Lawrence https://www.linkedin.com/in/david-lawren
 
 ## Screen shots 
     ###### Customer view
-    ![](customer.png)
+    ![](https://github.com/DavidLawrence1985/Bamazon/customer.png)
 
     ###### Manager view
-    ![](manager.png)
+    ![](https://github.com/DavidLawrence1985/Bamazon/manager.png)
 
     ###### Supervisor view
-    ![](supervisor.png)
+    ![](https://github.com/DavidLawrence1985/Bamazon/supervisor.png)
     
 
