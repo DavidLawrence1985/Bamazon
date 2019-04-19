@@ -25,7 +25,7 @@ writen and maintained by David Lawrence https://www.linkedin.com/in/david-lawren
 ## *DEMO*
 
 ###### YOUTUBE video link
-    **gif coming soon...untill then follow the below link**
+    **gif coming soon...until then follow the below link**
 https://www.youtube.com/watch?v=bRq250K6GcM
 
 ## Screen shots 
